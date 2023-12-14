@@ -21,7 +21,8 @@
 
   https://www.arduino.cc/en/Tutorial/BuiltInExamples/Blink
 */
-#define A 20
+#define A 50
+#define B 36 // 22 24 30 34 36 32 28 26
 int i;
 // the setup function runs once when you press reset or power the board
 void setup() {
@@ -36,19 +37,84 @@ void setup() {
   pinMode(32, OUTPUT);
   pinMode(34, OUTPUT);
   pinMode(36, OUTPUT);
+  
+  pinMode(37, OUTPUT);
+  pinMode(39, OUTPUT);
+  pinMode(41, OUTPUT);
+  pinMode(43, OUTPUT);
+  pinMode(45, OUTPUT);
+  pinMode(47, OUTPUT);
+  pinMode(49, OUTPUT);
+  pinMode(51, OUTPUT);
+  pinMode(53, OUTPUT);
+
 
 }
 
 // the loop function runs over and over again forever
 void loop() {
-  for(i=20;i<38;)
-  {
-    Serial.println("valor del ping");
-    Serial.println(i);
-  digitalWrite(i, HIGH);  // turn the LED on (HIGH is the voltage level)
+
+  /*
+  // 22 24 30 34 36 32 28 26
+  digitalWrite(22, HIGH);  // turn the LED on (HIGH is the voltage level)
   delay(A);                      // wait for a second
-  digitalWrite(i, LOW);   // turn the LED off by making the voltage LOW
+  digitalWrite(22, LOW);   // turn the LED off by making the voltage LOW
   delay(A); 
-  i=i+2;
-  }                     // wait for a second
+  
+  digitalWrite(24, HIGH);  // turn the LED on (HIGH is the voltage level)
+  delay(A);                      // wait for a second
+  digitalWrite(24, LOW);   // turn the LED off by making the voltage LOW
+  delay(A); 
+
+  digitalWrite(30, HIGH);  // turn the LED on (HIGH is the voltage level)
+  delay(A);                      // wait for a second
+  digitalWrite(30, LOW);   // turn the LED off by making the voltage LOW
+  delay(A); 
+
+  digitalWrite(34, HIGH);  // turn the LED on (HIGH is the voltage level)
+  delay(A);                      // wait for a second
+  digitalWrite(34, LOW);   // turn the LED off by making the voltage LOW
+  delay(A); 
+
+  digitalWrite(36, HIGH);  // turn the LED on (HIGH is the voltage level)
+  delay(A);                      // wait for a second
+  digitalWrite(36, LOW);   // turn the LED off by making the voltage LOW
+  delay(A); 
+
+  digitalWrite(32, HIGH);  // turn the LED on (HIGH is the voltage level)
+  delay(A);                      // wait for a second
+  digitalWrite(32, LOW);   // turn the LED off by making the voltage LOW
+  delay(A); 
+
+  digitalWrite(28, HIGH);  // turn the LED on (HIGH is the voltage level)
+  delay(A);                      // wait for a second
+  digitalWrite(28, LOW);   // turn the LED off by making the voltage LOW
+  delay(A); 
+  
+  digitalWrite(26, HIGH);  // turn the LED on (HIGH is the voltage level)
+  delay(A);                      // wait for a second
+  digitalWrite(26, LOW);   // turn the LED off by making the voltage LOW
+  delay(A); 
+
+  */
+                       // wait for a second
+  //digitalWrite(37, HIGH);          //luces bajas           
+  //digitalWrite(39, HIGH);          //Marcha atras
+  //digitalWrite(41, HIGH);          //condensador de flujo superior 
+  //digitalWrite(43, HIGH);          //luz amarilla
+  //digitalWrite(45, HIGH);          //luz verde
+  //digitalWrite(47, HIGH);          //luz de giro acompañante
+  //digitalWrite(49, HIGH);          //condensador de flujo inferior
+  //digitalWrite(51, HIGH);          //luz de giro conductor
+  //digitalWrite(53, HIGH);          //luces altas
+  
+  digitalWrite(49, HIGH);
+  delay(A);
+  digitalWrite(49, LOW);
+  delay(A);
+  digitalWrite(41, HIGH);
+  delay(A);
+  digitalWrite(41, LOW);
+  delay(A);
+  
 }
