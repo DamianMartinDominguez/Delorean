@@ -1,7 +1,7 @@
 
 
-#define BLYNK_TEMPLATE_ID           "TMPLPyRwW6Wy"
-#define BLYNK_DEVICE_NAME           "SerialGateWay"
+#define BLYNK_TEMPLATE_ID "TMPLUsFmNnAS"
+#define BLYNK_TEMPLATE_NAME "Delorean"
 #define BLYNK_AUTH_TOKEN            "aXzUiNvHJJeNUEshnWE4LTaEWOt91ksn"
 #define altas 16
 #define bajas 5
