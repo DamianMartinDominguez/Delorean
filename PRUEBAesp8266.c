@@ -36,14 +36,14 @@ void loop() {
   digitalWrite(reactor1, HIGH);
   digitalWrite(reactor2, HIGH);
    delay(500);
-   digitalWrite(atras, HIGH);//
-  digitalWrite(bajas, HIGH);//
-  digitalWrite(altas, HIGH);//bajas internas
+   digitalWrite(atras, HIGH);//luces marcha atras
+  digitalWrite(bajas, HIGH);//luces marcha atras
+  digitalWrite(altas, HIGH);//condensador de flujo bajas
   digitalWrite(flujo1, HIGH);//altas externas
   digitalWrite(flujo2, HIGH);//luces amarillas del tablero trasero 
   digitalWrite(giroi, HIGH);//condensador de flujo arriba
   digitalWrite(girod, HIGH);//giro derecho
-  digitalWrite(reactor1, HIGH);//tablero y posicion
+  digitalWrite(reactor1, LOW);//tablero y posicion(bajas)
   digitalWrite(reactor2, HIGH);//giro izquierdo
    delay(500);
 }
