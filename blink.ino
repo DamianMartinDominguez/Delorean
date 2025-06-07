@@ -1,4 +1,4 @@
-*************************************************************
+/*************************************************************
 
   This is a simple demo of sending and receiving some data.
   Be sure to check out other examples!
@@ -45,14 +45,14 @@ bool condensador=0;
 BlynkTimer timer;
 
 // This function is called every time the Virtual Pin 0 state changes
-BLYNK_WRITE(V0)//condensador
+BLYNK_WRITE(V9)//condensador
 {
   // Set incoming value from pin V0 to a variable
   int value = param.asInt();
 
   // Update state
-  Blynk.virtualWrite(V0, value);
-  condensador=value;
+  Blynk.virtualWrite(V9, value);
+  digitalWrite(condensador, value);
 }
 
 BLYNK_WRITE(V1)//neon
@@ -121,8 +121,10 @@ BLYNK_WRITE(V7)//D7 tablero y posicion(bajas)
   int value = param.asInt();
 
   // Update state
-  Blynk.virtualWrite(V7, value);
+  //Blynk.virtualWrite(V7, value);
   digitalWrite(bajas, value);
+  digitalWrite(amarilla, value);
+  
 }
 
 BLYNK_WRITE(V8)//D8 giro izquierdo
@@ -186,6 +188,11 @@ void loop()
   // to avoid delay() function!
   unsigned long currentMillis = millis();
 
+if(izquierda==LOW)
+
+    if (currentMillis - previousMillis >= interval) 
+    digitalWrite(giroi, LOW);
+  
   if(izquierda==HIGH)
 {
     if (currentMillis - previousMillis >= interval) {
@@ -194,6 +201,10 @@ void loop()
     digitalWrite(giroi, izquierda1);
   }
 }
+if(derecha==LOW)
+ if (currentMillis - previousMillis >= interval) 
+    digitalWrite(girod, LOW);
+  
 if(derecha==HIGH)
 {
     if (currentMillis - previousMillis >= interval) {
@@ -202,47 +213,52 @@ if(derecha==HIGH)
     digitalWrite(girod, derecha1);
   }
 }
+
 if(balizas==HIGH)
 {
     if (currentMillis - previousMillis >= interval) {
     previousMillis = currentMillis;
-    balizas1 = !balizas; // Cambia el estado
+    balizas1 = !balizas1; // Cambia el estado
     digitalWrite(girod, balizas1);
     digitalWrite(giroi, balizas1);
 
 
 }
 }
- if (condensador == HIGH) { // Si está encendido
-
-  switch (paso) {
-    case 0: // Encender flujo1
-      digitalWrite(flujo1, HIGH);
-      digitalWrite(flujo2, LOW);
-      paso = 1;
-      break;
-
-    case 1: // Esperar 300 ms y luego cambiar
-      if (currentMillis - previousMillis >= 300) {
-        digitalWrite(flujo1, LOW);
-        digitalWrite(flujo2, HIGH);
-        paso = 2;
-      }
-      break;
-
-    case 2: // Esperar otros 500 ms
-      if (currentMillis - previousMillis >= 500) {
-        digitalWrite(flujo1, LOW);
-        digitalWrite(flujo2, LOW);
-        paso = 0;
-      }
-      break;
-  }
-
-} else {
-  digitalWrite(flujo1, LOW);
-  digitalWrite(flujo2, LOW);
-}
+ 
   
+  if (paso == 0) {
+  // Encender flujo1
+   Serial.println("entro en paso 0");
+  digitalWrite(flujo1, LOW);
+  digitalWrite(flujo2, HIGH);
+  previousMillis = currentMillis;
+  paso = 1;
+}
+else if (paso == 1) {
+  // Esperar 300 ms y luego cambiar
+  Serial.println("entro en paso 1");
+  if (currentMillis - previousMillis >= 100) {
+    digitalWrite(flujo1, HIGH);
+    digitalWrite(flujo2, LOW);
+    previousMillis = currentMillis;
+    paso = 2;
   }
+}
+else if (paso == 2) {
+  Serial.println("entro en paso 2");
+  // Esperar otros 500 ms
+  if (currentMillis - previousMillis >= 100) {
+    digitalWrite(flujo1, LOW);
+    digitalWrite(flujo2, LOW);
+    paso = 0;
+    delay(200);
+  }
+}
+
+} 
+
+ 
+  
+
 
